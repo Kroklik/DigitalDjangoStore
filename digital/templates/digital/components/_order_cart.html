@@ -1,0 +1,53 @@
+{% load static %}
+{% load digital_tags %}
+<li class="order  order_cart">
+    <div class="info">
+        <a href="#">
+            <img class="order_cart_img" src="{{ item.product.get_image_product }}" alt="">
+        </a>
+        <div class="info_order">
+            <h4 class="product_title">{{ item.product.title }}</h4>
+            <div class="color_quantity">
+                <div class="color"><p>Цвет:</p> <span>{{ item.product.color_name }}</span></div>
+
+                <div class="quantity"><p>Кол-во:</p> <span>{{ item.quantity }}</span>
+
+                    {% if 'my_cart' in request.path %}
+                    <div class="quantity_arrow">
+                        {% if item.product.quantity > 0 %}
+                        <a href="{% url 'to_cart' item.product.pk 'add' %}">
+                            <img data-product="id" data-action="add" class="chg-quantity update-cart"
+                                 src="{% static 'digital/image/icons/arrow-up.png' %}" alt="">
+                        </a>
+                        {% endif %}
+
+                        <a href="{% url 'to_cart' item.product.pk 'delete' %}">
+                            <img data-product="id" data-action="remove" class="chg-quantity update-cart"
+                                 src="{% static 'digital/image/icons/arrow-down.png' %}" alt="">
+                        </a>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="price_cart">
+        <p class="product_price_title">Стоимость</p>
+        <p class="product_price">{% get_normal_price item.product.price %} сум</p>
+    </div>
+
+    <div class="data_add">
+        <p class="product_data">Дата добавления</p>
+        <div class="data"><img src="{% static 'digital/image/icons/clarity_date-line.svg' %}" alt=""> <span>{{ item.added_at }}</span>
+        </div>
+    </div>
+
+    <div class="price_cart">
+        <p class="product_price_title">Итого</p>
+        <p class="product_price">{% get_normal_price item.get_total_price %} сум</p>
+    </div>
+
+</li>
+
+

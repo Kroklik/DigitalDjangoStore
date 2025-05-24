@@ -1,0 +1,40 @@
+{% load static %}
+{% load digital_tags %}
+
+<div class="detail_product">
+    <div class="product_img">
+        <img class="product_img-img" src="{{ product.get_image_product }}" alt="">
+    </div>
+    <div class="product_info">
+        <h2 class="title__product">{{ product.brand }} {{ product.model_product }} {{ product.color_name }}</h2>
+        <div class="price_color">
+            <div class="price_product">
+                <p>Цена:</p>
+                <h3>{% get_normal_price  product.price %} сум</h3>
+            </div>
+            <div class="color_product">
+                <p>Цвет:</p>
+                <div class="box_color">
+                    {% get_colors product.model_product  as colors %}
+                    {% if not product.model_product %}
+                    <a href="#"  class="color_squer" style="background: {{ product.color_cod }}"></a>
+                    {% else %}
+                    {% for color in colors %}
+                    <a href="{% url 'product_color' product.model_product color %}"  class="color_squer" style="background: {{ color }}"></a>
+                    {% endfor %}
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+        <div class="list_button">
+            <a href="" class="btn btn_cage1"><img src="{% static 'digital/image/icons/cage.svg' %}" alt=""> <span>Вкорзину</span> </a>
+
+            <a href="" class="btn btn_cage2"><span>Купить в рассрочку</span> </a>
+
+        </div>
+    </div>
+</div>
+
+
+

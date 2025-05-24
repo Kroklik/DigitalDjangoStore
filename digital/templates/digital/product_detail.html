@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block swiper %}
+
+{% endblock swiper %}
+
+
+{% block main %}
+
+<main>
+    <div class="content">
+      <div class="container">
+
+        {% include 'digital/components/_detail_product.html' %}
+
+
+        {% include 'digital/components/_product_info.html' %}
+
+
+        <div class="same_products">
+          <div class="content">
+            <div class="container">
+              <div class="same_product_text">
+                <h2 class="content__title">Похожие товары</h2>
+                <a href="#" class="content__title"><span>Больше Товаров</span> <img src="../image/icons/errow_right.svg"
+                    alt=""></a>
+              </div>
+              <div class="content__cards">
+
+                {% for product in products %}
+                {% include 'digital/components/_product_card.html' %}
+                {% endfor %}
+
+              </div>
+
+
+            </div>
+
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+{% endblock main %}
+

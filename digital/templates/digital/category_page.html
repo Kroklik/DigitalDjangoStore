@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block swiper %}
+
+{% endblock swiper %}
+
+
+{% block main %}
+
+<main>
+    <div class="content">
+      <div class="container">
+        <h2 class="content__title">Смартфоны</h2>
+
+        {% include 'digital/components/_list_filter.html' %}
+
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="container">
+        <div class="content__cards list_cards">
+
+          {% for product in products %}
+          {% include 'digital/components/_product_card.html' %}
+          {% endfor %}
+
+        </div>
+
+        {% include 'digital/components/_pagination.html' %}
+
+      </div>
+    </div>
+
+</main>
+
+{% endblock main %}

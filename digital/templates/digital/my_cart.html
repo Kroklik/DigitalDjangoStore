@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load digital_tags %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block swiper %}
+
+{% endblock swiper %}
+
+
+{% block main %}
+
+  <main>
+
+
+    <div class="content">
+        <div class="container">
+            <div class="my_card_orders">
+                <h3>Моя Корзина</h3>
+            </div>
+
+            <div class="total_products_price">
+                <p class="total_products_cart"><span>Общее количество: </span>{{ order.get_cart_total_quantity }}</p>
+                <p class="total_price_cart"><span>Общая стоимость: </span>{% get_normal_price  order.get_cart_total_price %} сумм</p>
+            </div>
+            <ul class="list_card_orders ">
+                {% for item in products %}
+                {% include 'digital/components/_order_cart.html' %}
+                {% endfor %}
+
+            </ul>
+
+            {% if products %}
+            <div class="order_btns">
+            <a href="{% url 'clear_cart' %}" class="btn_order">Очистить корзину</a>
+            <a href="{% url 'checkout' %}" class="btn_order">Оформить заказ</a>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+</main>
+
+{% endblock main %}
+
+
+

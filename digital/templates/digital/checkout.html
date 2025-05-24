@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load digital_tags %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block swiper %}
+
+{% endblock swiper %}
+
+
+{% block main %}
+
+<main>
+
+    <div class="content">
+        <div class="container">
+
+            <div class="checkout_content">
+
+                <div class="checkout_form">
+                    <h2 class="address_title">Адрес получателя</h2>
+                    <form action="{% url 'payment' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="block_input">
+                            <div class="form_group">
+                                {{ shipping_form.city }}
+                            </div>
+                            <div class="form_group">
+                                {{ shipping_form.address }}
+                            </div>
+                        </div>
+
+                        <div class="block_input">
+                            <div class="form_group">
+                                {{ shipping_form.region }}
+                            </div>
+                            <div class="form_group">
+                                {{ shipping_form.phone }}
+                            </div>
+                        </div>
+
+                        <div class="form_group">
+                            {{ shipping_form.comment }}
+                        </div>
+
+                        <div class="checkout_form_user">
+                            <h2 class="address_title">Данные о получаетеле</h2>
+                            <div class="block_input">
+                                <div class="form_group">
+                                    {{ customer_form.first_name }}
+                                </div>
+                                <div class="form_group">
+                                    {{ customer_form.last_name }}
+                                </div>
+                            </div>
+
+                            <div class="form_group">
+                                {{ customer_form.email }}
+                            </div>
+                        </div>
+
+                        <button class="btn_order" type="submit">Оформить заказ</button>
+                    </form>
+
+                </div>
+
+                <div class="check">
+                    <h2 class="address_title">Товары заказа</h2>
+
+                    <div class="order_checkout_info">
+                        {% for item in items %}
+                        <div class="count_price">
+                            <p>{{ item.product.title }}</p>
+                            <div class="price_count">
+                                <p class="info_count_price">
+                                    <span class="count_col">Количество: </span> {{ item.quantity }} шт
+                                </p>
+                                <p class="info_count_price">
+                                    <span class="count_col">На сумму: </span> {% get_normal_price item.get_total_price %} сум
+                                </p>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                        <div class="line_down_check"></div>
+
+                        <h2 class="pay_title">Сумма оплаты: {% get_normal_price order.get_cart_total_price %}</h2>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+{% endblock main %}
+

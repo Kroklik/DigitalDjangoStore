@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% include 'components_base/_style.html' %}
+
+  <title>
+    {% block title %}
+
+    {% endblock title %}
+  </title>
+</head>
+
+<body>
+
+  <!-- header start -->
+  {% for message in messages %}
+    <div class="alert {{ message.tags }}" role="alert" id="message">
+        {{ message }}
+    </div>
+  {% endfor %}
+
+  <header>
+    <div class="nav__header">
+      <div class="container">
+
+        {% include 'components_base/_nav_info.html' %}
+
+
+      </div>
+    </div>
+
+    <nav>
+      {% include 'components_base/_nav_menu_icon.html' %}
+
+
+    </nav>
+
+
+
+    {% include 'components_base/_header_nav_menu.html' %}
+
+    {% block swiper %}
+    {% include 'components_base/_swiper.html' %}
+    {% endblock swiper %}
+
+  </header>
+  <!-- header end -->
+
+
+  <!-- Main start -->
+  {% block main %}
+
+  {% endblock main %}
+  <!-- Main end -->
+
+  <!-- Footer start -->
+  {% include 'components_base/_footer.html' %}
+
+
+
+  <!-- Footer end -->
+  {% include 'components_base/_script.html' %}
+
+</body>
+
+</html>
+

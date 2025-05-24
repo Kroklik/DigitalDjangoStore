@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block swiper %}
+
+{% endblock swiper %}
+
+
+{% block main %}
+
+<main>
+    <div class="content">
+        <div class="container">
+            <h2 class="login_title">Авторизация</h2>
+            <div class="login_content">
+                <div class="login">
+                    <div class="login_form">
+
+                        <form action="{% url 'login' %}" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            <div class="form-group">
+                                {{ form.username }}
+                            </div>
+
+                            <div class="form-group">
+                                {{ form.password}}
+                            </div>
+
+                            <button class="btn  btn-login" type="submit">Войти</button>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+{% endblock main %}

@@ -1,0 +1,64 @@
+<div class="list_filter">
+    <form action="" method="post" enctype="multipart/form-data">
+        <div class="list_label">
+
+            <div class="brand">
+                <button class="cat_name" type="button"><span>Бренд</span> <img src="../image/icons/errow_down.svg"
+                                                                               alt=""></button>
+                <ul class="list_cat">
+                    {% for brand in brands %}
+                    <li><a class="category" href="?brand={{ brand }}">{{ brand }}</a></li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+
+
+            <div class="brand brand1">
+                <button class="cat_name" type="button"><span>Цвет</span> <img src="../image/icons/errow_down.svg"
+                                                                               alt=""></button>
+                <ul class="list_cat">
+                    {% for color in colors %}
+                    <li><a class="category" href="?color={{ color }}">{{ color }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+
+            <div class="brand brand2">
+                <button class="cat_name" type="button"><span>Цена</span> <img src="../image/icons/errow_down.svg"
+                                                                                alt=""></button>
+                <ul class="list_cat">
+                    {% for price in prices %}
+                    <li><a class="category" href="?price={{ price }}">{{ price }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+
+            <div class="brand brand3">
+                <button class="cat_name" type="button"><span>Скидка</span> <img src="../image/icons/errow_down.svg"
+                                                                               alt=""></button>
+                <ul class="list_cat">
+                    {% for discount in discounts %}
+                    <li><a class="category" href="?discount={{ discount }}">
+                        {% if discount %}
+                        {{ discount }}
+                        {% else %}
+                        нет скидок
+                        {% endif %}
+
+                    </a></li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+
+
+        </div>
+    </form>
+</div>
+
+
+
+
